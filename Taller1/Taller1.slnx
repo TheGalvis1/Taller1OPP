@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="gameplay/gameplay.csproj" Id="853c7908-a87e-4385-831c-6e75c7d8e9bf" />
+  <Project Path="theplay/theplay.csproj" Id="362593f4-44d2-4e30-9046-1fdff68eb7a5" />
+</Solution>
