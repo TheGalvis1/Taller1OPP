@@ -28,43 +28,54 @@ namespace theplay
 
         public Time(int hour, int minute, int second, int millisecond)
         {
-            if (!ValidHour(hour))
-                throw new Exception($"The hour {hour}, is not valid.");
-
-            if (!ValidMinute(minute))
-                throw new Exception($"The minute {minute}, is not valid.");
-
-            if (!ValidSecond(second))
-                throw new Exception($"The second {second}, is not valid.");
-
-            if (!ValidMillisecond(millisecond))
-                throw new Exception($"The millisecond {millisecond}, is not valid.");
-
-            _hour = hour;
-            _minute = minute;
-            _second = second;
-            _millisecond = millisecond;
+            _hour = ValidHour(hour);
+            _minute = ValidMinute(minute);
+            _second = ValidSecond(second);
+            _millisecond = ValidMillisecond(millisecond);
         }
 
-
-        private bool ValidHour(int hour)
+        private int ValidHour(int hour)
         {
-            return hour >= 0 && hour <= 23;
+            if (hour < 0 || hour > 23)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(hour),
+                    $"The hour: {hour}, is not valid.");
+            }
+            return hour;
         }
 
-        private bool ValidMinute(int minute)
+        private int ValidMinute(int minute)
         {
-            return minute >= 0 && minute <= 59;
+            if (minute < 0 || minute > 59)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(minute),
+                    $"The minute: {minute}, is not valid.");
+            }
+            return minute;
         }
 
-        private bool ValidSecond(int second)
+        private int ValidSecond(int second)
         {
-            return second >= 0 && second <= 59;
+            if (second < 0 || second > 59)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(second),
+                    $"The second: {second}, is not valid.");
+            }
+            return second;
         }
 
-        private bool ValidMillisecond(int millisecond)
+        private int ValidMillisecond(int millisecond)
         {
-            return millisecond >= 0 && millisecond <= 999;
+            if (millisecond < 0 || millisecond > 999)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(millisecond),
+                    $"The millisecond: {millisecond}, is not valid.");
+            }
+            return millisecond;
         }
 
 
@@ -88,7 +99,6 @@ namespace theplay
             return (long)_hour * 60 +
                    _minute;
         }
-
 
         public Time Add(Time other)
         {
@@ -133,7 +143,6 @@ namespace theplay
 
             return hr >= 24;
         }
-
 
         public override string ToString()
         {
