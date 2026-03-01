@@ -1,4 +1,4 @@
-﻿namespace theplay
+﻿namespace thetime
 {
     public class Time
     {
@@ -9,10 +9,10 @@
 
         public Time()
         {
-            _hour = 0;
-            _minute = 0;
-            _second = 0;
-            _millisecond = 0;
+            Hour = 0;
+            Minute = 0;
+            Second = 0;
+            Millisecond = 0;
         }
 
         public Time(int hour)
@@ -75,7 +75,9 @@
         private int ValidateHour(int hour)
         {
             if (hour < 0 || hour > 23)
-                throw new ArgumentException($"The hour: {hour}, is not valid.");
+            {
+                throw new ArgumentOutOfRangeException(nameof(hour), $"The hour: {hour}, is not valid");
+            }
             return hour;
         }
 
@@ -102,30 +104,30 @@
 
         public override string ToString()
         {
-            {
-                int displayHour = _hour;
-                string amPm = _hour < 12 ? "AM" : "PM";
+            int hour12 = Hour % 12;
 
-                if (_hour == 0) displayHour = 12;
-                else if (_hour > 12) displayHour = _hour - 12;
+            if (hour12 == 0)
+                hour12 = 12;
 
-                return $"{displayHour:00}:{_minute:00}:{_second:00}.{_millisecond:000} {amPm}";
-            }
+            string period = Hour < 12 ? "AM" : "PM";
+
+            return $"{hour12:D2}:{Minute:D2}:{Second:D2}.{Millisecond:D3} {period}";
+
         }
 
-        public long ToMilliseconds()
+        public int ToMilliseconds()
         {
-            return (_hour * 3600000L) + (_minute * 60000L) + (_second * 1000L) + _millisecond;
+            return Hour * 3600000 + Minute * 60000 + Second * 1000 + Millisecond;
         }
 
         public long ToSeconds()
         {
-            return (_hour * 3600L) + (_minute * 60L) + _second;
+            return Hour * 3600 + Minute * 60 + Second;
         }
 
         public long ToMinutes()
         {
-            return (_hour * 60L) + _minute;
+            return Hour * 60 + Minute;
         }
 
         public bool IsOtherDay(Time other)

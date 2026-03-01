@@ -1,7 +1,9 @@
-﻿using theplay;
+﻿using thetime;
+
 
 try
 {
+
     var t1 = new Time();
     var t2 = new Time(14);
     var t3 = new Time(9, 34);
@@ -17,13 +19,13 @@ try
         Console.WriteLine($"\tSeconds     : {time.ToSeconds(),15:N0}");
         Console.WriteLine($"\tMinutes     : {time.ToMinutes(),15:N0}");
         Console.WriteLine($"\tAdd         : {time.Add(t3),15:N0}");
-        Console.WriteLine($"\tIs Other day: {time.IsOtherDay(t4)}");
+        Console.WriteLine($"\tIs Other day: {time.IsOtherDay(t4)})");
         Console.WriteLine();
     }
 
     var t6 = new Time(45, -7, 90, -87);
 }
-catch (Exception exception)
+catch (Exception ex)
 {
-    Console.WriteLine(exception.Message);
+    Console.WriteLine($"Error creating time: {ex.Message}");
 }
