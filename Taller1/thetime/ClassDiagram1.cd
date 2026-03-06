@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="thetime.Time">
-    <Position X="5.75" Y="2" Width="1.5" />
+    <Position X="5.75" Y="2" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAIACAAAAgCEACAEAAAiAAIEAAAIACIAAEAAAAAAAgI=</HashCode>
-      <FileName>time.cs</FileName>
+      <FileName>Time.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
